@@ -1,0 +1,180 @@
+﻿<Window x:Class="ClientSide.View.afterLogin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClientSide.View"
+        mc:Ignorable="d"
+       Title="LoginView" Height="550" Width="800"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        AllowsTransparency="True"
+        MouseDown="Window_MouseDown">
+
+    <Border CornerRadius="12">
+
+        <Border.Background>
+            <ImageBrush ImageSource="\Images\back-image.png"/>
+        </Border.Background>
+
+        <Border CornerRadius="10"                    
+            BorderThickness="2"
+            Opacity="0.85">
+
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#462AD8" Offset="0"/>
+                    <GradientStop Color="#DA34AE" Offset="0.75"/>
+                    <GradientStop Color="#8A16C1" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                    <GradientStop Color="#060531" Offset="0"/>
+                    <GradientStop Color="#1B1448" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="5"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="Students page"
+                               Foreground="DarkGray"
+                               FontSize="10"
+                               FontFamily="Montserrat"
+                               Grid.Column="0"
+                               VerticalAlignment="Center"
+                               Margin="10,0,0,0"/>
+
+                    <TextBox Height = "23" x:Name = "textBox1" Width = "120" Margin = "361,116,0,0"  
+         HorizontalAlignment = "Left" VerticalAlignment = "Top"  
+         Text="{Binding SelectedItem.Content, ElementName=listbox}" />
+
+                    <Button x:Name="btnMinimize"                           
+                            BorderThickness="0"
+                            Content="-"
+                            Foreground="White"
+                            FontSize="16"
+                            FontFamily="Montserrat"
+                            Cursor="Hand"
+                            Grid.Column="1"
+                            Click="btnMinimize_Click">
+
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#28AEED"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#278BEF"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="18" Height="18"
+                                        CornerRadius="9"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+
+                    </Button>
+
+                    <Button x:Name="btnClose"                          
+                            BorderThickness="0"
+                            Content="X"
+                            Foreground="White"
+                            FontSize="12"
+                            FontFamily="Montserrat"
+                            Cursor="Hand"
+                            Grid.Column="2"
+                            Click="btnClose_Click">
+
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#DA34AE"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#C62DAE"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="18" Height="18"
+                                        CornerRadius="9"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+
+                <StackPanel
+                            Grid.Row="1"
+                            Orientation="Vertical"
+                            Margin="0,0,732,447">
+
+                    <Image Source="C:\Users\HP\source\repos\CollegeAPI\ClientSide\Images\Logo.png"
+                           Width="50" Height="50"/>
+
+                    <TextBlock Text="Tel Hai"
+                               Foreground="White"
+                               FontSize="12"
+                               FontWeight="Medium"
+                               FontFamily="Montserrat"
+                               HorizontalAlignment="Center"/>
+
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                Margin="0,15,0,0"/>
+
+                </StackPanel>
+                <ComboBox  SelectionChanged="ComboBox_SelectionChanged" x:Name="courcecombo" Margin="100,91,496,395" Grid.Row="1">
+                    
+                </ComboBox>
+                <ComboBox Visibility="Collapsed" SelectionChanged="ComboBox_SelectionChanged2" x:Name="assignmentcombo" Margin="496,91,100,395" Grid.Row="1">
+                    
+                </ComboBox>
+                <WrapPanel x:Name="btnfile" Visibility="Collapsed" HorizontalAlignment="Center" DockPanel.Dock="Top" Margin="0,215,0,189" Grid.Row="1" Width="185">
+                    <TextBlock Text="submit file here "  FontSize="12" Foreground="White"  HorizontalAlignment="Center" Height="14" Width="104" TextWrapping="Wrap" VerticalAlignment="Center" FontWeight="Medium"
+                               FontFamily="Montserrat" TextAlignment="Right" x:Name="sfh"/>
+                    <Button x:Name="btnOpenFile" Click="btnOpenFile_Click" Content="Open file"/>
+                    <TextBlock Text ="" FontSize="12" Foreground="Yellow"  HorizontalAlignment="Center" Height="91" Width="184" TextWrapping="Wrap" VerticalAlignment="Center" FontWeight="Medium"
+                               FontFamily="Montserrat" TextAlignment="Center" x:Name="fpath"/>
+
+                </WrapPanel>
+                <Button x:Name="logout" Content="Logout" HorizontalAlignment="Left" Margin="696,460,0,0" Grid.Row="1" VerticalAlignment="Top" Background="White" Width="58" Click="logout_Click"/>
+                <Button Visibility="Collapsed" x:Name="cancel" Content="cancel" HorizontalAlignment="Left" Margin="453,332,0,0" Grid.Row="1" VerticalAlignment="Top" Click="cancel_Click"/>
+                <Button Visibility="Collapsed" x:Name="submit" Content="submit" HorizontalAlignment="Left" Margin="398,332,0,0" Grid.Row="1" VerticalAlignment="Top" Click="submit_Click"/>
+
+            </Grid>
+
+
+        </Border>
+
+    </Border>
+</Window>

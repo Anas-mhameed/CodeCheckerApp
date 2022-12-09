@@ -1,0 +1,227 @@
+﻿<Window x:Class="ClientSide.View.Deliver"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClientSide.View"
+        mc:Ignorable="d"
+        Title="LoginView" Height="550" Width="800"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        AllowsTransparency="True"
+        MouseDown="Window_MouseDown">
+
+    <Border CornerRadius="12">
+        <Border.Background>
+            <ImageBrush ImageSource="\Images\back-image.png"/>
+        </Border.Background>
+
+        <Border CornerRadius="10"                    
+            BorderThickness="2"
+            Opacity="0.85">
+
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#462AD8" Offset="0"/>
+                    <GradientStop Color="#DA34AE" Offset="0.75"/>
+                    <GradientStop Color="#8A16C1" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                    <GradientStop Color="#060531" Offset="0"/>
+                    <GradientStop Color="#1B1448" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="5"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="teachers page"
+                               Foreground="DarkGray"
+                               FontSize="10"
+                               FontFamily="Montserrat"
+                               Grid.Column="0"
+                               VerticalAlignment="Center"
+                               Margin="10,0,0,0"/>
+
+                    <Button x:Name="btnMinimize"                           
+                            BorderThickness="0"
+                            Content="-"
+                            Foreground="White"
+                            FontSize="16"
+                            FontFamily="Montserrat"
+                            Cursor="Hand"
+                            Grid.Column="1"
+                            Click="btnMinimize_Click">
+
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#28AEED"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#278BEF"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="18" Height="18"
+                                        CornerRadius="9"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+
+                    </Button>
+
+                    <Button x:Name="btnClose"                          
+                            BorderThickness="0"
+                            Content="X"
+                            Foreground="White"
+                            FontSize="12"
+                            FontFamily="Montserrat"
+                            Cursor="Hand"
+                            Grid.Column="2"
+                            Click="btnClose_Click">
+
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#DA34AE"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#C62DAE"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="18" Height="18"
+                                        CornerRadius="9"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
+
+                <StackPanel
+                            Grid.Row="1"
+                            Orientation="Vertical"
+                            Margin="0,0,732,447">
+
+                    <Image Source="\Images\Logo.png"
+                           Width="50" Height="50"/>
+
+                    <TextBlock Text="Tel Hai"
+                               Foreground="White"
+                               FontSize="12"
+                               FontWeight="Medium"
+                               FontFamily="Montserrat"
+                               HorizontalAlignment="Center"/>
+
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                Margin="0,15,0,0"/>
+
+                </StackPanel>
+                <ComboBox x:Name="tcourses" HorizontalAlignment="Left" Margin="100,91,0,0" Grid.Row="1" VerticalAlignment="Top" Width="170" SelectionChanged="ComboBox_SelectionChanged">
+
+                </ComboBox>
+                <ComboBox Visibility="Collapsed" x:Name="tcombo" HorizontalAlignment="Left" Margin="412,91,0,0" Grid.Row="1" VerticalAlignment="Top" Width="170" SelectionChanged="tcombo_SelectionChanged">
+
+                </ComboBox>
+                <Button Visibility="Collapsed" x:Name="addass" Content="Add assighnment" HorizontalAlignment="Left" Margin="607,91,0,0" Grid.Row="1" VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}" Click="addass_Click" Width="118"/>
+                <Button Visibility="Collapsed" x:Name="getcg" Content="Get course grades" HorizontalAlignment="Left" Margin="607,116,0,0" Grid.Row="1" VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}" Click="getcg_Click" Width="118"/>
+
+
+                <Button x:Name="Visible" Content="Logout" HorizontalAlignment="Left" Margin="696,460,0,0" Grid.Row="1" VerticalAlignment="Top" Background="White" Width="58" Click="logout_Click"/>
+                <WrapPanel x:Name="wrap" Visibility="Collapsed" HorizontalAlignment="Left" DockPanel.Dock="Top" Margin="32,166,0,100" Grid.Row="1" Width="366">
+                    <Button Visibility="Visible" x:Name="submit" Content="submit" HorizontalAlignment="Left" Margin="190,220,0,0" Grid.Row="1" VerticalAlignment="Top" Width="78" Click="submit_Click"/>
+                    <Button Visibility="Visible" x:Name="cancel" Content="cancel" HorizontalAlignment="Left" Height="20" Margin="10,220,0,0" Grid.Row="1" VerticalAlignment="Top" Width="78" Click="cancel_Click"/>
+                    <TextBlock Visibility="Visible" Text ="output.txt file:" FontSize="12" Foreground="Yellow"  HorizontalAlignment="Left" Height="28" Width="363" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Medium"
+                               FontFamily="Montserrat" TextAlignment="Left" x:Name="opath" Margin="0,-200,0,0" Grid.Row="1" RenderTransformOrigin="0.5,0.5">
+                        <TextBlock.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-0.194"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                    <Button Visibility="Visible" x:Name="addjson" Content="add json file" HorizontalAlignment="Left" Margin="0,-160,0,0" Grid.Row="1" VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}" Click="addjson_Click" Width="99"/>
+                    <Button Visibility="Visible" x:Name="addrules" Content="add output file" HorizontalAlignment="Left" Margin="-100,-240,0,0" Grid.Row="1" VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}" Click="addrules_Click" Width="99"/>
+                    <TextBlock x:Name="jpath" Visibility="Visible" Text ="ruls.json file:" FontSize="12" Foreground="Yellow"  HorizontalAlignment="Left" Height="28" Width="361" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Medium"
+                        FontFamily="Montserrat" TextAlignment="Left"  Margin="0,-120,0,0" Grid.Row="1" RenderTransformOrigin="0.5,0.5">
+                        <TextBlock.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-0.194"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                </WrapPanel>
+
+                <Button Visibility="Collapsed" x:Name="remcourse" Content="Remove course" HorizontalAlignment="Left" Margin="607,166,0,0" Grid.Row="1" VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}"  Width="118" Click="remcourse_Click"/>
+                <Button Visibility="Visible" x:Name="addcourse" Content="Add course" HorizontalAlignment="Left" Margin="100,116,0,0" Grid.Row="1" VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}"  Width="118" Click="addcourse_Click"/>
+                <Button Visibility="Collapsed" x:Name="gcavg" Content="Get cource average" HorizontalAlignment="Left" Margin="607,141,0,0" Grid.Row="1" VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}" Click="gcavg_Click" Width="118"/>
+                <Button Visibility="Collapsed" x:Name="gettg" Content="Get task grades" HorizontalAlignment="Left" Margin="607,166,0,0" Grid.Row="1" VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}" Click="gettg_Click" Width="118"/>
+                <Button Visibility="Collapsed" x:Name="getavg" Content="Get task average" HorizontalAlignment="Left" Margin="607,191,0,0" Grid.Row="1" VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}" Click="getavg_Click" Width="118"/>
+                <Grid x:Name="courseStuff" Margin="100,161,194,8" Grid.Row="1" Visibility="Collapsed">
+                    <Button x:Name="editcoursebtn" Content="Edit description" HorizontalAlignment="Left" Margin="25,32,0,0" VerticalAlignment="Top" Width="113" Click="editcoursebtn_Click"/>
+                    <TextBox x:Name="courseinfo" IsReadOnly="True" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                        ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="25,57,52,73"  BorderBrush="#FF030404" BorderThickness="2,2,1,2"   Foreground="White">
+                        <TextBox.Background>
+                            <SolidColorBrush Color="Black" Opacity="0.4"/>
+                        </TextBox.Background>
+
+                    </TextBox>
+                    <Button x:Name="saveedit" Content="Save" HorizontalAlignment="Left" Margin="386,284,0,0" VerticalAlignment="Top" Width="64" Click="saveedit_Click"/>
+                    <Button x:Name="canceledit" Content="Cancel" HorizontalAlignment="Left" Margin="317,284,0,0" VerticalAlignment="Top" Width="64" Click="canceledit_Click" />
+                </Grid>
+                <Grid Margin="100,141,336,330" Grid.Row="1" x:Name="addcbblock" Visibility="Collapsed">
+                    <TextBox x:Name="cnentry" HorizontalAlignment="Left" Margin="93,2,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
+                    <Label x:Name="anlabel" Content="Course name" HorizontalAlignment="Left" Margin="4,0,0,0" VerticalAlignment="Top" Height="20" HorizontalContentAlignment="Stretch" FontFamily="Aharoni" Foreground="#FFB7B7B7"/>
+                    <Button Visibility="Visible" x:Name="addc" Content="Add" HorizontalAlignment="Left" Margin="218,1,0,0" VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}"  Width="60" Click="addc_Click"/>
+                    <Button Visibility="Visible" x:Name="canceladdc" Content="Cancel" HorizontalAlignment="Left" Margin="282,1,0,0" VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}"  Width="60" Click="canceladdc_Click" />
+                </Grid>
+
+                <Button Visibility="Collapsed" x:Name="cinf" Content="Show course info" HorizontalAlignment="Left" Margin="607,191,0,0" Grid.Row="1" VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}"  Width="118" Click="cinf_Click"/>
+                <Grid x:Name="showinf" Grid.RowSpan="2" Height="546" VerticalAlignment="Top" Visibility="Collapsed">
+                    <Rectangle Stroke="Black" Fill="#FF464444" Opacity="0.5" Margin="0,27,0,0"/>
+                    <Rectangle Margin="100,67,100,84" Grid.Row="1" Stroke="Black" Fill="White"/>
+                    <Button Content="X" HorizontalAlignment="Left" Margin="677,68,0,0" Grid.Row="1" VerticalAlignment="Top" Width="18" Click="Button_Click"/>
+                    <TextBlock x:Name="infohere" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Course information:" VerticalAlignment="Top" Height="352" Margin="0,88,0,0" Width="470"/>
+                </Grid>
+            </Grid>
+
+        </Border>
+
+    </Border>
+</Window>
